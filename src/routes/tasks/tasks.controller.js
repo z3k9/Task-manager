@@ -1,15 +1,29 @@
-//const {getAllTasks} = require('../../models/');
+const Task = require('../../models/tasks.mongo');
 
-function httpGetAllTasks(req,res){
-    return res.status(200).json({success: true});
+//const { getAllTasks } = require('../../models/');
+
+async function httpGetAllTasks(req,res){
+    try{
+        const tasks = await Task.find({});
+        return res.status(200).json({ tasks })
+    }
+    catch(error){
+        return res.status(500).json({ msg:error })
+    }
 }
 
 function httpGetTask(req, res){
-    return res.status(200).json({success: true});
+    res.status(200).json({success: true});
 }
 
-function httpCreateTask(req,res){
-    return res.status(200).json({success: true});
+async function httpCreateTask(req,res){
+    try{
+        const task = await Task.create(req.body);
+        res.status(201).json({ task });
+    }
+    catch(error){
+        res.status(500).json({ msg:error });
+    }
 }
 
 function httpUpdateTask(req,res){
