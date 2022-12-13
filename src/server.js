@@ -4,7 +4,7 @@ require('dotenv').config();
 const { mongoConnect } = require('./services/mongo');
 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 const server = http.createServer(app);
 
 async function startServer(){
