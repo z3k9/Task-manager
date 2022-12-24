@@ -1,7 +1,5 @@
 const Task = require('../../models/tasks.mongo');
 
-//const { getAllTasks } = require('../../models/');
-
 async function httpGetAllTasks(req,res){
     try{
         const tasks = await Task.find({});
